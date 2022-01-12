@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import profilePic from '../public/assets/images/sydney-harbour.png'
 import { IMAGES_DATA_LIST } from '../pages/api/images'
+import Link from 'next/link'
 
 function Images({ images }) {
   return (
@@ -11,7 +12,7 @@ function Images({ images }) {
 
       {
         images.map(image => {
-          return <Image
+          return <Link href={'/images/' + image.id}><Image
             key={image.id}
             src={image.url}
             alt="Picture of the author"
@@ -19,7 +20,7 @@ function Images({ images }) {
             height={500}
           // blurDataURL="data:..." automatically provided
           // placeholder="blur" // Optional blur-up while loading
-          />;
+          /></Link>;
         })
       }
 
